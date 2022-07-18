@@ -26,7 +26,7 @@ function Sidebar() {
       </div>
       {/** Side Menu */}
       <div className="mt-4 mb-2.5  ">
-        <SidebarMenuItem text="Home" Icon={HomeIcon} />
+        <SidebarMenuItem text="Home" Icon={HomeIcon} active />
         <SidebarMenuItem text="Explore" Icon={HashtagIcon} />
         <SidebarMenuItem text="Notifications" Icon={BellIcon} />
         <SidebarMenuItem text="Messages" Icon={InboxIcon} />
