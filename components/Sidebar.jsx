@@ -14,7 +14,7 @@ import SidebarMenuItem from "./SidebarMenuItem";
 
 function Sidebar() {
   return (
-    <div className="hidden sm:flex flex-col p-2  fixed h-full">
+    <div className="hidden sm:flex flex-col p-2  fixed h-full ">
       {/** Twitter Logo */}
       <div className="w-[3rem] hoverEffect hover:bg-blue-100 my-5 ">
         <Image
