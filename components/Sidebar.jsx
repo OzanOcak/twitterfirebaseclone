@@ -58,13 +58,13 @@ function Sidebar() {
               src={session.user?.image}
               width={70}
               height={70}
-              alt="d.duck"
+              alt={session.user?.image}
               className="rounded-full"
               onClick={signOut}
             />
             <div className="leading-5 hidden xl:inline text-gray-700">
-              <div className="font-bold">Donald Duck</div>
-              <div className="text-gray-500">@donaldduck</div>
+              <div className="font-bold">{session.user?.name}</div>
+              <div className="text-gray-500">@{session.user.username}</div>
             </div>
           </div>
         </>
