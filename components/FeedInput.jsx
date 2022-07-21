@@ -1,4 +1,8 @@
-import { EmojiHappyIcon, PhotographIcon } from "@heroicons/react/outline";
+import {
+  EmojiHappyIcon,
+  PhotographIcon,
+  XIcon,
+} from "@heroicons/react/outline";
 import {
   addDoc,
   collection,
@@ -27,14 +31,14 @@ function FeedInput() {
       image: session.user?.image,
       timestamp: serverTimestamp(),
     });
-    const imageRef = ref(storage, `posts/${docRef.id}/image`);
+    const imageRef = ref(storage, `posts/${docRef.id}/image`); //save the img in firebase storage
 
     if (selectedFile) {
       await uploadString(imageRef, selectedFile, "data_url").then(async () => {
         const downloadURL = await getDownloadURL(imageRef);
         await updateDoc(doc(db, "posts", docRef.id), {
           image: downloadURL,
-        });
+        }); // save the url in firestore db
       });
     }
 
@@ -77,6 +81,16 @@ function FeedInput() {
               ></textarea>
             </div>
 
+            {selectedFile && (
+              <div className="relative">
+                <XIcon
+                  onClick={() => setSelectedFile(null)}
+                  className="text-black h-5 bg-sky-100 rounded-full cursor-pointer absolute "
+                />
+                <img src={selectedFile} alt="" />
+              </div>
+            )}
+
             <div className="flex items-center justify-between pt-2.5">
               <div className="flex">
                 <div onClick={() => filePickerRef.current.click()}>
@@ -85,7 +99,7 @@ function FeedInput() {
                     type="file"
                     hidden
                     ref={filePickerRef}
-                    onClick={addImageToPost}
+                    onChange={addImageToPost}
                   />
                 </div>
                 <EmojiHappyIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
