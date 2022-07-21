@@ -7,6 +7,7 @@ const nextConfig = {
       "upload.wikimedia.org",
       "images.unsplash.com",
       "randomuser.me",
+      "lh3.googleusercontent.com",
     ],
   },
   swcMinify: true,
