@@ -13,7 +13,11 @@ function FeedInput() {
     const docRef = await addDoc(collection(db, "posts"), {
       id: session.user?.uid,
       text: input,
+      name: session.user?.name,
+      email: session.user?.email,
+      image: session.user?.image,
     });
+    setInput("");
   };
   return (
     <>
