@@ -22,7 +22,12 @@ function FeedInput() {
   //console.log(session);
   const filePickerRef = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const sendPost = async () => {
+    if (loading) return;
+    setLoading(true);
+
     const docRef = await addDoc(collection(db, "posts"), {
       id: session.user?.uid,
       text: input,
@@ -43,6 +48,8 @@ function FeedInput() {
     }
 
     setInput("");
+    setSelectedFile(null);
+    setLoading(false);
   };
 
   const addImageToPost = (e) => {
@@ -87,7 +94,11 @@ function FeedInput() {
                   onClick={() => setSelectedFile(null)}
                   className="text-black h-5 bg-sky-100 rounded-full cursor-pointer absolute "
                 />
-                <img src={selectedFile} alt="" />
+                <img
+                  src={selectedFile}
+                  alt=""
+                  className={`${loading && "animate-pulse"}`}
+                />
               </div>
             )}
 
@@ -105,13 +116,15 @@ function FeedInput() {
                 <EmojiHappyIcon className="h-10 w-10 hoverEffect p-2 text-sky-500 hover:bg-sky-100" />
               </div>
               <div className="mb-1">
-                <button
-                  onClick={sendPost}
-                  disabled={!input?.trim()}
-                  className="text-white bg-blue-500 rounded-full px-3 py-.8 disabled:opacity-50"
-                >
-                  Tweet
-                </button>
+                {!loading && (
+                  <button
+                    onClick={sendPost}
+                    disabled={!input?.trim()}
+                    className="text-white bg-blue-500 rounded-full px-3 py-.8 disabled:opacity-50"
+                  >
+                    Tweet
+                  </button>
+                )}
               </div>
             </div>
           </div>
