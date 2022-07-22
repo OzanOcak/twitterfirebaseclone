@@ -14,7 +14,7 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { db, storage } from "../firebase";
+import { db, storage } from "../../firebase";
 
 function FeedInput() {
   const { data: session } = useSession();
