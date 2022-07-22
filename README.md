@@ -34,3 +34,7 @@ solution first put inline utility class in jsx then wirte its utility
 
 - TypeError: (0 , firebase_storage**WEBPACK_IMPORTED_MODULE_2**.getApps) is not a function
 - in firebase v9 getDocs should be importad from import { initializeApp ,getDocs } from "firebase/app"; but automatically it is imported from storage that causes error
+
+### fetching time : yarn add moment react-moment
+
+### component transition animation : yarn add framer-motion

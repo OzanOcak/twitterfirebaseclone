@@ -4,6 +4,6 @@
 
 @layer components {
   .hoverEffect {
-    @apply cursor-pointer hover:bg-gray-200 rounded-full w-[3.5rem] h-[3rem] xl:w-auto xl:h-auto;
+    @apply cursor-pointer hover:bg-gray-200 rounded-full w-[3.5rem] h-[3rem] xl:w-auto xl:h-auto transition duration-500 ease-out;
   }
 }

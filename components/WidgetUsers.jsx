@@ -2,8 +2,8 @@ import Image from "next/image";
 
 function WidgetUsers({ randomUser }) {
   return (
-    <div className="flex justify-between">
-      <div className="flex items-center px-4 py-2  cursor-pointer hover:bg-gray-200">
+    <div className="flex justify-between  cursor-pointer hover:bg-gray-200 transition duration-500 ease-out">
+      <div className="flex items-center px-4 py-2 ">
         <Image
           alt=""
           src={randomUser.picture.thumbnail}

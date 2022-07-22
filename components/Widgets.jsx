@@ -1,4 +1,5 @@
 import { SearchIcon } from "@heroicons/react/outline";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import WidgetNews from "./WidgetNews";
 import News from "./WidgetNews";
@@ -27,9 +28,20 @@ function Widgets({ newsResults, randomUsersResults }) {
 
       <div className="text-gray-700 space-y-3 bg-gray-100 rounded-xl pt-2  w-[80%] xl:w-[75%]">
         <h4 className="font-bold text-xl px-4">{`What's happening?`}</h4>
-        {newsResults.slice(0, numberOfArticles).map((article) => (
-          <WidgetNews key={article.id} article={article} />
-        ))}
+        <AnimatePresence>
+          {newsResults.slice(0, numberOfArticles).map((article) => (
+            <motion.div
+              key={article.title}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <WidgetNews key={article.id} article={article} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+
         <div className="mr-1 mb-3">
           <button
             onClick={() => setNumberOfArticles(numberOfArticles + 3)}
@@ -44,12 +56,22 @@ function Widgets({ newsResults, randomUsersResults }) {
 
       <div className="sticky top-[10rem] text-gray-700 space-y-3 rounded-2xl bg-gray-100 pt-2  w-[80%] xl:w-[75%]">
         <h4 className="font-bold text-xl px-4">Who to follow</h4>
-        {randomUsersResults.slice(0, numberOfUsers).map((randomUser) => (
-          <WidgetUsers
-            key={randomUser.login.username}
-            randomUser={randomUser}
-          />
-        ))}
+        <AnimatePresence>
+          {randomUsersResults.slice(0, numberOfUsers).map((randomUser) => (
+            <motion.div
+              key={randomUser.login.username}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <WidgetUsers
+                key={randomUser.login.username}
+                randomUser={randomUser}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
         <div className="mr-1 ml-3">
           <button
             onClick={() => setNumberOfUsers(numberOfUsers + 3)}
