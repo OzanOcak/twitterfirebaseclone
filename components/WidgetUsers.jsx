@@ -20,7 +20,7 @@ function WidgetUsers({ randomUser }) {
           </h5>
         </div>
       </div>
-      <div className="flex justify-center items-center h-2 mt-7">
+      <div className="flex justify-center items-center h-2 mt-7 mr-2">
         <button className="text-white bg-sky-600  px-1 rounded-xl">
           follow
         </button>

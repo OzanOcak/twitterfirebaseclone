@@ -63,7 +63,7 @@ function Sidebar() {
               onClick={signOut}
             />
             <div className="leading-5 hidden xl:inline text-gray-700">
-              <div className="font-bold">{session.user?.name}</div>
+              <div className="font-bold ml-1">{session.user?.name}</div>
               <div className="text-gray-500">@{session.user.username}</div>
             </div>
           </div>

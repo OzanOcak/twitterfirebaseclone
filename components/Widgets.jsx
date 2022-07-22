@@ -42,7 +42,7 @@ function Widgets({ newsResults, randomUsersResults }) {
 
       {/** users to follow */}
 
-      <div className="sticky top-[10rem] text-gray-700 space-y-3 rounded-2xl bg-gray-100 pt-2  w-[80%] xl-:w-[75%]">
+      <div className="sticky top-[10rem] text-gray-700 space-y-3 rounded-2xl bg-gray-100 pt-2  w-[80%] xl:w-[75%]">
         <h4 className="font-bold text-xl px-4">Who to follow</h4>
         {randomUsersResults.slice(0, numberOfUsers).map((randomUser) => (
           <WidgetUsers

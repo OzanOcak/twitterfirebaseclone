@@ -7,6 +7,7 @@ import {
   TrashIcon,
 } from "@heroicons/react/outline";
 import LikeWidget from "./LikeWidget";
+import Moment from "react-moment";
 
 function FeedPost({ post }) {
   return (
@@ -28,15 +29,15 @@ function FeedPost({ post }) {
 
         <div className="flex  justify-between">
           {/* post user info */}
-          <div className="flex  font-bold items-center space-x-1 whitespace-nowrap">
-            <span className="text-sm sm:text-[15px]">
-              {post.data().name} -{" "}
+          <div className="flex items-end mb-2 space-x-1 whitespace-nowrap">
+            <span className="text-sm font-bold sm:text-[18px]">
+              {post.data().name}{" "}
             </span>
-            <span className="text-sm sm:text-[15px]">
-              @{post.data().userName}{" "}
+            <span className="text-sm sm:text-[13px]">
+              @{post.data().userName} -{" "}
             </span>
-            <span className="text-sm sm:text-[15px] hover:underline">
-              {post.timestamp}
+            <span className="text-sm sm:text-[13px] hover:underline">
+              <Moment fromNow>{post?.timestamp?.toDate()}</Moment>
             </span>
           </div>
 
