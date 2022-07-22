@@ -33,7 +33,8 @@ function FeedInput() {
       text: input,
       name: session.user?.name,
       email: session.user?.email,
-      image: session.user?.image,
+      userImg: session.user?.image,
+      userName: session.user?.username,
       timestamp: serverTimestamp(),
     });
     const imageRef = ref(storage, `posts/${docRef.id}/image`); //save the img in firebase storage

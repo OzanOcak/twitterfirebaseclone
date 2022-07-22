@@ -18,7 +18,7 @@ function LikeWidget({ post }) {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
-      collection(db, "posts", post.id, "likes"),
+      collection(db, "posts", post.data().id, "likes"),
       (snapshot) => setLikes(snapshot.docs)
     );
   }, [db]);
@@ -30,11 +30,16 @@ function LikeWidget({ post }) {
   async function likePost() {
     if (session) {
       if (isLiked) {
-        await deleteDoc(doc(db, "posts", post.id, "likes", session?.user.uid));
+        await deleteDoc(
+          doc(db, "posts", post.data().id, "likes", session?.user.uid)
+        );
       } else {
-        await setDoc(doc(db, "posts", post.id, "likes", session?.user.uid), {
-          username: session.user.username,
-        });
+        await setDoc(
+          doc(db, "posts", post.data().id, "likes", session?.user.uid),
+          {
+            username: session.user.username,
+          }
+        );
       }
     } else {
       signIn();

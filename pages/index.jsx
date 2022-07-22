@@ -32,11 +32,15 @@ export default function Home({ newsResults, randomUsersResults }) {
 export async function getServerSideProps() {
   const newsResults = await fetch(
     "https://saurav.tech/NewsAPI/top-headlines/category/science/us.json"
-  ).then((res) => res.json());
+  )
+    .then((res) => res.json())
+    .catch((err) => log(err)); // error without catch err
 
   const randomUsersResults = await fetch(
     "https://randomuser.me/api/?results=30&inc=name,login,picture"
-  ).then((res) => res.json());
+  )
+    .then((res) => res.json())
+    .catch((err) => log(err));
 
   return {
     props: {

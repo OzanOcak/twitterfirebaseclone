@@ -3,7 +3,6 @@ import {
   ChartBarIcon,
   ChatIcon,
   DotsHorizontalIcon,
-  HeartIcon,
   ShareIcon,
   TrashIcon,
 } from "@heroicons/react/outline";
@@ -14,9 +13,9 @@ function FeedPost({ post }) {
     <div className="flex mx-auto w-full">
       {/** user image */}
       <div>
-        <Image
-          alt={post.name}
-          src={post.userImg}
+        <img
+          alt={post.data().name}
+          src={post?.data().userImg}
           width={50}
           height={50}
           className="rounded-full mr-3 mt-auto"
@@ -29,8 +28,13 @@ function FeedPost({ post }) {
 
         <div className="flex  justify-between">
           {/* post user info */}
-          <div className="flex items-center space-x-1 whitespace-nowrap">
-            <span className="text-sm sm:text-[15px]">@{post.username} - </span>
+          <div className="flex  font-bold items-center space-x-1 whitespace-nowrap">
+            <span className="text-sm sm:text-[15px]">
+              {post.data().name} -{" "}
+            </span>
+            <span className="text-sm sm:text-[15px]">
+              @{post.data().userName}{" "}
+            </span>
             <span className="text-sm sm:text-[15px] hover:underline">
               {post.timestamp}
             </span>
@@ -43,12 +47,17 @@ function FeedPost({ post }) {
         {/* post text */}
 
         <p className="text-gray-800 text-[15px] sm:text-[16px] mb-2">
-          {post.text}
+          {post.data().text}
         </p>
 
         {/* post image */}
         <div className="rounded-2xl mr-2">
-          <Image alt={post.name} src={post.img} width={500} height={300} />
+          <img
+            alt={post.data().name}
+            src={post.data().image}
+            width={500}
+            height={300}
+          />
         </div>
 
         <div className="flex justify-between text-gray-500 p-2">
