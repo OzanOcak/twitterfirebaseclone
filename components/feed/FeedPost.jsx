@@ -9,8 +9,12 @@ import {
 import LikeWidget from "./LikeWidget";
 import Moment from "react-moment";
 import DeleteWidget from "./deleteWidget";
+import { modalState } from "../../atom/modalAtom";
+import { useRecoilState } from "recoil";
 
 function FeedPost({ post }) {
+  const [open, setOpen] = useRecoilState(modalState);
+
   return (
     <div className="flex mx-auto w-full">
       {/** user image */}
@@ -63,7 +67,10 @@ function FeedPost({ post }) {
         </div>
 
         <div className="flex justify-between text-gray-500 p-2">
-          <ChatIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
+          <ChatIcon
+            onClick={() => setOpen(!open)}
+            className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100"
+          />
           <DeleteWidget post={post} />
           <LikeWidget post={post} />
           <ShareIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
