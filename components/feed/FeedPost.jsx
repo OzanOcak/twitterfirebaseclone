@@ -11,10 +11,13 @@ import Moment from "react-moment";
 import DeleteWidget from "./deleteWidget";
 import { modalState, postIdState } from "../../atom/modalAtom";
 import { useRecoilState } from "recoil";
+import { signIn, useSession } from "next-auth/react";
 
 function FeedPost({ post }) {
   const [open, setOpen] = useRecoilState(modalState);
   const [postIsd, setPostId] = useRecoilState(postIdState);
+
+  const { data: session } = useSession();
 
   return (
     <div className="flex mx-auto w-full">
@@ -58,20 +61,23 @@ function FeedPost({ post }) {
         </p>
 
         {/* post image */}
-        <div className="rounded-2xl mr-2">
-          <img
-            alt={post.data().name}
-            src={post.data().image}
-            width={500}
-            height={300}
-          />
-        </div>
+        <>
+          {post?.data()?.image && (
+            <div className="rounded-2xl mr-2">
+              <img alt="" src={post?.data()?.image} width={500} height={300} />
+            </div>
+          )}
+        </>
 
         <div className="flex justify-between text-gray-500 p-2">
           <ChatIcon
             onClick={() => {
-              setPostId(post.id);
-              setOpen(!open);
+              if (!session) {
+                signIn();
+              } else {
+                setPostId(post.id);
+                setOpen(!open);
+              }
             }}
             className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100"
           />

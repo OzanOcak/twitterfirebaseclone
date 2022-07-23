@@ -48,7 +48,7 @@ export async function getServerSideProps() {
   return {
     props: {
       newsResults,
-      randomUsersResults: JSON.parse(JSON.stringify(randomUsersResults)), //error solution
+      randomUsersResults, //error solution
     },
   };
 }
