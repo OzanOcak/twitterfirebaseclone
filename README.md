@@ -38,3 +38,9 @@ solution first put inline utility class in jsx then wirte its utility
 ### fetching time : yarn add moment react-moment
 
 ### component transition animation : yarn add framer-motion
+
+### yarn add react-modal
+
+### Error: Error serializing `.randomUsersResults` returned from `getServerSideProps` in "/".
+
+- Reason: `undefined` cannot be serialized as JSON. Please use `null` or omit this value.

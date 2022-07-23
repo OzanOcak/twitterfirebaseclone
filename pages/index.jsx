@@ -37,18 +37,19 @@ export async function getServerSideProps() {
     "https://saurav.tech/NewsAPI/top-headlines/category/science/us.json"
   )
     .then((res) => res.json())
-    .catch((err) => log(err)); // error without catch err
+    .catch((err) => console.log(err)); // error without catch err
 
   const randomUsersResults = await fetch(
     "https://randomuser.me/api/?results=30&inc=name,login,picture"
   )
     .then((res) => res.json())
-    .catch((err) => log(err));
+    .catch((err) => console.log(err));
 
   return {
     props: {
       newsResults,
-      randomUsersResults,
+      randomUsersResults: JSON.parse(JSON.stringify(randomUsersResults)), //error solution
     },
   };
 }
+//Error : `undefined` cannot be serialized as JSON.
