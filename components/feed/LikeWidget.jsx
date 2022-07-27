@@ -35,6 +35,7 @@ function LikeWidget({ post }) {
         );
       } else {
         await setDoc(
+          // change from setDoc cz it was creating new collection
           doc(db, "posts", post.data().id, "likes", session?.user.uid),
           {
             username: session.user.username,

@@ -8,7 +8,13 @@ import {
 } from "@heroicons/react/outline";
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { doc, onSnapshot } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  onSnapshot,
+  serverTimestamp,
+} from "firebase/firestore";
 import Moment from "react-moment";
 
 import { useSession } from "next-auth/react";
@@ -27,7 +33,16 @@ function CommentModal() {
     });
   }, [postId, db]); //Invalid document reference error :  postId cant be null ,defaul atom shouldn't be empty string but anything
 
-  function sendComment() {}
+  async function sendComment() {
+    await addDoc(collection(db, "posts", postId, "comments"), {
+      comment: input,
+      name: session.user.name,
+      userName: session.user.image,
+      time: serverTimestamp(),
+    });
+    setOpen(false);
+    setInput("");
+  }
 
   return (
     <div>
