@@ -2,7 +2,7 @@ import { HeartIcon } from "@heroicons/react/outline";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
 import { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
-import { db } from "../../firebase";
+import { db } from "../../../firebase";
 import {
   collection,
   deleteDoc,

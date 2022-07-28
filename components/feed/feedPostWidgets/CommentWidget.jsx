@@ -3,8 +3,8 @@ import { collection, onSnapshot } from "firebase/firestore";
 import { signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { modalState, postIdState } from "../../atom/modalAtom";
-import { db } from "../../firebase";
+import { modalState, postIdState } from "../../../atom/modalAtom";
+import { db } from "../../../firebase";
 
 function CommentWidget({ post }) {
   const [comments, setComments] = useState([]);

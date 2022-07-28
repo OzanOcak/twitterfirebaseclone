@@ -3,10 +3,10 @@ import {
   DotsHorizontalIcon,
   ShareIcon,
 } from "@heroicons/react/outline";
-import LikeWidget from "./LikeWidget";
+import LikeWidget from "./feedPostWidgets/LikeWidget";
 import Moment from "react-moment";
-import DeleteWidget from "./deleteWidget";
-import CommentWidget from "./CommentWidget";
+import DeleteWidget from "./feedPostWidgets/DeleteWidget";
+import CommentWidget from "./feedPostWidgets/CommentWidget";
 
 function FeedPost({ post }) {
   return (

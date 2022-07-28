@@ -2,7 +2,7 @@ import { TrashIcon } from "@heroicons/react/outline";
 import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
 import { useSession } from "next-auth/react";
-import { db, storage } from "../../firebase";
+import { db, storage } from "../../../firebase";
 
 function DeleteWidget({ post }) {
   const { data: session } = useSession();
