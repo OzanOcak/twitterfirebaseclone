@@ -1,24 +1,14 @@
-import Image from "next/image";
 import {
   ChartBarIcon,
-  ChatIcon,
   DotsHorizontalIcon,
   ShareIcon,
-  TrashIcon,
 } from "@heroicons/react/outline";
 import LikeWidget from "./LikeWidget";
 import Moment from "react-moment";
 import DeleteWidget from "./deleteWidget";
-import { modalState, postIdState } from "../../atom/modalAtom";
-import { useRecoilState } from "recoil";
-import { signIn, useSession } from "next-auth/react";
+import CommentWidget from "./CommentWidget";
 
 function FeedPost({ post }) {
-  const [open, setOpen] = useRecoilState(modalState);
-  const [postIsd, setPostId] = useRecoilState(postIdState);
-
-  const { data: session } = useSession();
-
   return (
     <div className="flex mx-auto w-full">
       {/** user image */}
@@ -70,17 +60,7 @@ function FeedPost({ post }) {
         </>
 
         <div className="flex justify-between text-gray-500 p-2">
-          <ChatIcon
-            onClick={() => {
-              if (!session) {
-                signIn();
-              } else {
-                setPostId(post.id);
-                setOpen(!open);
-              }
-            }}
-            className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100"
-          />
+          <CommentWidget post={post} />
           <DeleteWidget post={post} />
           <LikeWidget post={post} />
           <ShareIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />

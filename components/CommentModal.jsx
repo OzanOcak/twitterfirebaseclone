@@ -18,6 +18,7 @@ import {
 import Moment from "react-moment";
 
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 function CommentModal() {
   const [open, setOpen] = useRecoilState(modalState);
@@ -26,6 +27,7 @@ function CommentModal() {
 
   const { data: session } = useSession();
   const [input, setInput] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     onSnapshot(doc(db, "posts", postId), (snapshot) => {
@@ -42,6 +44,7 @@ function CommentModal() {
     });
     setOpen(false);
     setInput("");
+    router.push(`posts/${postId}`);
   }
 
   return (
