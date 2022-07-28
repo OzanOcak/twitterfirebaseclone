@@ -40,7 +40,7 @@ function CommentModal() {
       comment: input,
       name: session.user.name,
       userName: session.user.image,
-      time: serverTimestamp(),
+      timestamp: serverTimestamp(),
     });
     setOpen(false);
     setInput("");
