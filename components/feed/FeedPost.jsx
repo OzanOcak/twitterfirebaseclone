@@ -8,14 +8,14 @@ import Moment from "react-moment";
 import DeleteWidget from "./feedPostWidgets/DeleteWidget";
 import CommentWidget from "./feedPostWidgets/CommentWidget";
 
-function FeedPost({ post }) {
+function FeedPost({ post, id }) {
   return (
     <div className="flex mx-auto w-full">
       {/** user image */}
       <div>
         <img
-          alt={post.data().name}
-          src={post?.data().userImg}
+          alt={post?.data()?.name}
+          src={post?.data()?.userImg}
           width={50}
           height={50}
           className="rounded-full mr-3 mt-auto"
@@ -30,10 +30,10 @@ function FeedPost({ post }) {
           {/* post user info */}
           <div className="flex items-end mb-2 space-x-1 whitespace-nowrap">
             <span className="text-sm font-bold sm:text-[18px]">
-              {post.data().name}{" "}
+              {post?.data()?.name}{" "}
             </span>
             <span className="text-sm sm:text-[13px]">
-              @{post.data().userName} -{" "}
+              @{post?.data()?.userName} -{" "}
             </span>
             <span className="text-sm sm:text-[13px] hover:underline">
               <Moment fromNow>{post?.timestamp?.toDate()}</Moment>
@@ -47,7 +47,7 @@ function FeedPost({ post }) {
         {/* post text */}
 
         <p className="text-gray-800 text-[15px] sm:text-[16px] mb-2">
-          {post.data().text}
+          {post?.data()?.text}
         </p>
 
         {/* post image */}
@@ -60,9 +60,9 @@ function FeedPost({ post }) {
         </>
 
         <div className="flex justify-between text-gray-500 p-2">
-          <CommentWidget post={post} />
+          <CommentWidget id={id} />
           <DeleteWidget post={post} />
-          <LikeWidget post={post} />
+          <LikeWidget id={id} />
           <ShareIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
           <ChartBarIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
         </div>

@@ -1,13 +1,23 @@
 import { ArrowLeftIcon } from "@heroicons/react/outline";
+import { doc, onSnapshot } from "firebase/firestore";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import CommentModal from "../../components/CommentModal";
+import FeedPost from "../../components/feed/FeedPost";
 import Sidebar from "../../components/Sidebar";
 import Widgets from "../../components/Widgets";
+import { db } from "../../firebase";
 
-function Post({ newsResults, randomUsersResults }) {
+function PostPage({ newsResults, randomUsersResults }) {
   const router = useRouter();
   const { id } = router.query;
+  const [post, setPost] = useState();
+
+  useEffect(
+    () => onSnapshot(doc(db, "posts", id), (snapshot) => setPost(snapshot)),
+    [db, id]
+  );
   return (
     <div>
       <Head>
@@ -26,6 +36,7 @@ function Post({ newsResults, randomUsersResults }) {
               Tweet
             </h2>
           </div>
+          <FeedPost id={id} post={post} />
         </div>
         <Widgets
           newsResults={newsResults?.articles}
@@ -36,7 +47,7 @@ function Post({ newsResults, randomUsersResults }) {
     </div>
   );
 }
-export default Post;
+export default PostPage;
 
 /**  ---------------------------------------------- */
 

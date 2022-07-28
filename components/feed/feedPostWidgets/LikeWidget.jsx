@@ -11,14 +11,14 @@ import {
   setDoc,
 } from "firebase/firestore";
 
-function LikeWidget({ post }) {
+function LikeWidget({ id }) {
   const [isLiked, setIsLiked] = useState(false);
   const [likes, setLikes] = useState([]);
   const { data: session } = useSession();
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
-      collection(db, "posts", post.data().id, "likes"),
+      collection(db, "posts", id, "likes"),
       (snapshot) => setLikes(snapshot.docs)
     );
   }, [db]);
@@ -30,13 +30,11 @@ function LikeWidget({ post }) {
   async function likePost() {
     if (session) {
       if (isLiked) {
-        await deleteDoc(
-          doc(db, "posts", post.data().id, "likes", session?.user.uid)
-        );
+        await deleteDoc(doc(db, "posts", id, "likes", session?.user.uid));
       } else {
         await setDoc(
           // change from setDoc cz it was creating new collection
-          doc(db, "posts", post.data().id, "likes", session?.user.uid),
+          doc(db, "posts", id, "likes", session?.user.uid),
           {
             username: session.user.username,
           }

@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import { modalState, postIdState } from "../../../atom/modalAtom";
 import { db } from "../../../firebase";
 
-function CommentWidget({ post }) {
+function CommentWidget({ id }) {
   const [comments, setComments] = useState([]);
   const { data: session } = useSession();
 
@@ -15,7 +15,7 @@ function CommentWidget({ post }) {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
-      collection(db, "posts", post.id, "comments"),
+      collection(db, "posts", id, "comments"),
       (snapshot) => setComments(snapshot.docs)
     );
   }, [db]);
@@ -27,7 +27,7 @@ function CommentWidget({ post }) {
           if (!session) {
             signIn();
           } else {
-            setPostId(post.id);
+            setPostId(id);
             setOpen(!open);
           }
         }}
