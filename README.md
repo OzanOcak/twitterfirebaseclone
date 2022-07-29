@@ -44,3 +44,12 @@ solution first put inline utility class in jsx then wirte its utility
 ### Error: Error serializing `.randomUsersResults` returned from `getServerSideProps` in "/".
 
 - Reason: `undefined` cannot be serialized as JSON. Please use `null` or omit this value.
+
+### deployment
+
+- go vercel, deploy app in github,
+- within settings> env variables, enter env variables including secret key then deploy
+- it will give error wile sign in, the url need to add google cloud for redirection
+- google cloud > api & services > credentials then click the project unde OAuth 2.0 Client IDs
+- and finally Authorized JavaScript origins: https://twitterfirebaseclone.vercel.app
+- Authorized redirect URIs :https://twitterfirebaseclone.vercel.app/api/auth/callback/google

@@ -14,7 +14,7 @@ function FeedPost({ post, id }) {
   return (
     <div className="flex mx-auto w-full">
       {/** user image */}
-      <div>
+      <div className="m-1">
         <img
           alt={post?.data()?.name}
           src={post?.data()?.userImg}

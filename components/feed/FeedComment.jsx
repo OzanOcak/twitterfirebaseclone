@@ -12,13 +12,13 @@ function FeedComment({ comment, id }) {
   return (
     <div className="flex mx-auto ml-[3.7rem] mr-[1.7rem] border-b my-4">
       {/** user image */}
-      <div>
+      <div className="min-w-[30px]">
         <img
           alt={comment.name}
           src={comment.userName}
-          width={50}
-          height={50}
-          className="rounded-full mr-3 mt-auto"
+          width={30}
+          height={30}
+          className="rounded-full mr-3 mt-auto "
         />
       </div>
 
