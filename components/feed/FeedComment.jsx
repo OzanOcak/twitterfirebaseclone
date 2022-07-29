@@ -8,14 +8,14 @@ import Moment from "react-moment";
 import DeleteWidget from "./feedPostWidgets/DeleteWidget";
 import CommentWidget from "./feedPostWidgets/CommentWidget";
 
-function FeedPost({ post, id }) {
+function FeedComment({ comment, id }) {
   return (
-    <div className="flex mx-auto w-full">
+    <div className="flex mx-auto ml-[3.7rem]">
       {/** user image */}
       <div>
         <img
-          alt={post?.data()?.name}
-          src={post?.data()?.userImg}
+          alt={comment.name}
+          src={comment.userName}
           width={50}
           height={50}
           className="rounded-full mr-3 mt-auto"
@@ -30,13 +30,11 @@ function FeedPost({ post, id }) {
           {/* post user info */}
           <div className="flex items-end mb-2 space-x-1 whitespace-nowrap">
             <span className="text-sm font-bold sm:text-[18px]">
-              {post?.data()?.name}{" "}
+              {comment?.name}{" "}
             </span>
-            <span className="text-sm sm:text-[13px]">
-              @{post?.data()?.userName} -{" "}
-            </span>
+            <span className="text-sm sm:text-[13px]">@{comment?.name} - </span>
             <span className="text-sm sm:text-[13px] hover:underline">
-              <Moment fromNow>{post?.data()?.timestamp?.toDate()}</Moment>
+              <Moment fromNow>{comment?.timestamp?.toDate()}</Moment>
             </span>
           </div>
 
@@ -47,21 +45,11 @@ function FeedPost({ post, id }) {
         {/* post text */}
 
         <p className="text-gray-800 text-[15px] sm:text-[16px] mb-2">
-          {post?.data()?.text}
+          {comment?.comment}
         </p>
 
-        {/* post image */}
-        <>
-          {post?.data()?.image && (
-            <div className="rounded-2xl mr-2">
-              <img alt="" src={post?.data()?.image} width={500} height={300} />
-            </div>
-          )}
-        </>
-
         <div className="flex justify-between text-gray-500 p-2">
-          <CommentWidget id={id} />
-          <DeleteWidget post={post} />
+          <DeleteWidget id={id} />
           <LikeWidget id={id} />
           <ShareIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
           <ChartBarIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
@@ -70,4 +58,4 @@ function FeedPost({ post, id }) {
     </div>
   );
 }
-export default FeedPost;
+export default FeedComment;
