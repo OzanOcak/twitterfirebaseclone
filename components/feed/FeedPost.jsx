@@ -7,8 +7,10 @@ import LikeWidget from "./feedPostWidgets/LikeWidget";
 import Moment from "react-moment";
 import DeleteWidget from "./feedPostWidgets/DeleteWidget";
 import CommentWidget from "./feedPostWidgets/CommentWidget";
+import { useRouter } from "next/router";
 
 function FeedPost({ post, id }) {
+  const router = useRouter();
   return (
     <div className="flex mx-auto w-full">
       {/** user image */}
@@ -46,7 +48,10 @@ function FeedPost({ post, id }) {
 
         {/* post text */}
 
-        <p className="text-gray-800 text-[15px] sm:text-[16px] mb-2">
+        <p
+          className="text-gray-800 text-[15px] sm:text-[16px] mb-2"
+          onClick={() => router.push(`/posts/${id}`)}
+        >
           {post?.data()?.text}
         </p>
 
@@ -54,7 +59,13 @@ function FeedPost({ post, id }) {
         <>
           {post?.data()?.image && (
             <div className="rounded-2xl mr-2">
-              <img alt="" src={post?.data()?.image} width={500} height={300} />
+              <img
+                alt=""
+                src={post?.data()?.image}
+                width={500}
+                height={300}
+                onClick={() => router.push(`/posts/${id}`)}
+              />
             </div>
           )}
         </>

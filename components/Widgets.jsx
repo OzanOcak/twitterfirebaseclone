@@ -9,7 +9,7 @@ function Widgets({ newsResults, randomUsersResults }) {
   const [numberOfArticles, setNumberOfArticles] = useState(3);
   const [numberOfUsers, setNumberOfUsers] = useState(3);
   return (
-    <div className="xl:w-[25rem] hidden lg:inline space-y-5 ml-8">
+    <div className="max-w-[23rem] xl:w-[25rem] hidden lg:inline space-y-5 lg:ml-8 ">
       {/** sticky search */}
 
       <div className="w-[80%] xl:w-[75%] sticky top-0 bg-white py-1.5 z-50">

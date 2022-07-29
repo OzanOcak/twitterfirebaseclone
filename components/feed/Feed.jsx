@@ -20,7 +20,7 @@ function Feed() {
   );
 
   return (
-    <div className="xl:ml-[23rem] sm:border-l sm:border-r border-gray-200 md:min-w-[30rem] lg:min-w-[36rem] xl:min-w-[36rem] sm:ml-[5rem]  flex-grow max-w-xl">
+    <div className="xl:ml-[21rem] sm:border-l sm:border-r border-gray-200 sm:min-w-[30rem] lg:min-w-[36rem] sm:ml-[5rem]  flex-grow max-w-xl">
       <div className="flex justify-between py-0 px-3 top-0 sticky z-10 bg-white border-b border-gray-200">
         <h2 className="text-lg sm:text-xl py-[.6rem] font-bold cursor-pointer">
           Home

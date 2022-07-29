@@ -10,7 +10,7 @@ import CommentWidget from "./feedPostWidgets/CommentWidget";
 
 function FeedComment({ comment, id }) {
   return (
-    <div className="flex mx-auto ml-[3.7rem]">
+    <div className="flex mx-auto ml-[3.7rem] mr-[1.7rem] border-b my-4">
       {/** user image */}
       <div>
         <img
@@ -47,13 +47,6 @@ function FeedComment({ comment, id }) {
         <p className="text-gray-800 text-[15px] sm:text-[16px] mb-2">
           {comment?.comment}
         </p>
-
-        <div className="flex justify-between text-gray-500 p-2">
-          <DeleteWidget id={id} />
-          <LikeWidget id={id} />
-          <ShareIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
-          <ChartBarIcon className="h-9 w-9 hoverEffect p-2 hover:text-sky-500 hover:bg-sky-100" />
-        </div>
       </div>
     </div>
   );
